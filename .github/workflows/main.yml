@@ -17,20 +17,29 @@ jobs:
           username: ec2-user
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
-            # Navigate and ensure Git is ready
-            cd /home/ec2-user
-            sudo yum install git -y
+            # 1. Define a dedicated application directory
+            APP_DIR="/home/ec2-user/dbs-devops-assignment"
             
-            # THE FIX: Completely clear the hidden and visible files so Clone works
-            if [ ! -d ".git" ]; then
-              echo "Performing deep clean for fresh clone..."
-              sudo rm -rf ..?* .[!.]* * git clone https://github.com/morningstar7137/dbs-devops-assignment.git .
+            # 2. Ensure system dependencies are ready
+            sudo yum install git docker -y
+            sudo systemctl start docker
+            sudo usermod -aG docker ec2-user || true
+            
+            # 3. Smart Deployment Logic
+            if [ ! -d "$APP_DIR/.git" ]; then
+              echo "Creating fresh directory..."
+              sudo rm -rf $APP_DIR
+              git clone https://github.com/morningstar7137/dbs-devops-assignment.git $APP_DIR
             else
-              echo "Repository exists, pulling updates..."
+              echo "Updating existing repository..."
+              cd $APP_DIR
               git pull origin main
             fi
             
-            # Standard Docker Build and Run
+            # 4. Navigate to the folder where the Dockerfile lives
+            cd $APP_DIR
+            
+            # 5. Build and Restart the Container
             sudo docker stop my-app || true
             sudo docker rm my-app || true
             sudo docker build -t my-app .
