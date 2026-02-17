@@ -1,0 +1,21 @@
+---
+- name: Setup Docker and Deploy App
+  hosts: webserver
+  become: yes
+  tasks:
+    - name: Build Docker image from Dockerfile
+      community.docker.docker_image:
+        name: dbs-sample-app
+        build:
+          path: /home/ec2-user/project/
+        source: build
+        state: present
+
+    - name: Run Docker container
+      community.docker.docker_container:
+        name: dbs-sample-app
+        image: dbs-sample-app:latest
+        state: started
+        restart_policy: always
+        published_ports:
+          - "80:80"
