@@ -17,7 +17,8 @@ jobs:
           username: ec2-user
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
-            # 1. Prepare environment
+           # 1. Prepare environment
+          
             cd /home/ec2-user
             sudo yum install git docker -y
             sudo systemctl start docker
