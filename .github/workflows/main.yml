@@ -18,9 +18,15 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
             cd /home/ec2-user
-            # This ensures your latest code is actually on the server
             sudo yum install git -y
-            git clone https://github.com/morningstar7137/dbs-devops-assignment.git . || git pull origin main
+            # If the folder isn't a git repo, clean it and clone. 
+            # If it is, just pull the latest changes.
+            if [ ! -d ".git" ]; then
+              sudo rm -rf *
+              git clone https://github.com/morningstar7137/dbs-devops-assignment.git .
+            else
+              git pull origin main
+            fi
             
             sudo docker stop my-app || true
             sudo docker rm my-app || true
