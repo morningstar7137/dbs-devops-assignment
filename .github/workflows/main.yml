@@ -17,24 +17,20 @@ jobs:
           username: ec2-user
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
-            # Navigate to the correct home directory for Amazon Linux
+            # Navigate and ensure Git is ready
             cd /home/ec2-user
-            
-            # Ensure Git is installed on the server
             sudo yum install git -y
             
-            # Smart Deployment: Check if the folder is already a Git repository
-            if [ -d ".git" ]; then
-              echo "Repository exists, pulling latest changes..."
-              git pull origin main
+            # THE FIX: Completely clear the hidden and visible files so Clone works
+            if [ ! -d ".git" ]; then
+              echo "Performing deep clean for fresh clone..."
+              sudo rm -rf ..?* .[!.]* * git clone https://github.com/morningstar7137/dbs-devops-assignment.git .
             else
-              echo "Repository not found, cleaning directory and cloning fresh..."
-              sudo rm -rf *
-              git clone https://github.com/morningstar7137/dbs-devops-assignment.git .
+              echo "Repository exists, pulling updates..."
+              git pull origin main
             fi
             
-            # Build and Restart the Docker Container
-            echo "Building and starting Docker container..."
+            # Standard Docker Build and Run
             sudo docker stop my-app || true
             sudo docker rm my-app || true
             sudo docker build -t my-app .
