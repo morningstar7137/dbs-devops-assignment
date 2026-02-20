@@ -1,0 +1,15 @@
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/obj/Debug/net9.0/BankAccount.GeneratedMSBuildEditorConfig.editorconfig
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/obj/Debug/net9.0/BankAccount.AssemblyInfoInputs.cache
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/obj/Debug/net9.0/BankAccount.AssemblyInfo.cs
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/obj/Debug/net9.0/BankAccount.csproj.CoreCompileInputs.cache
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/obj/Debug/net9.0/BankAccount.sourcelink.json
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/bin/Debug/net9.0/BankAccount
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/bin/Debug/net9.0/BankAccount.deps.json
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/bin/Debug/net9.0/BankAccount.runtimeconfig.json
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/bin/Debug/net9.0/BankAccount.dll
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/bin/Debug/net9.0/BankAccount.pdb
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/obj/Debug/net9.0/BankAccount.dll
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/obj/Debug/net9.0/refint/BankAccount.dll
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/obj/Debug/net9.0/BankAccount.pdb
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/obj/Debug/net9.0/BankAccount.genruntimeconfig.cache
+/Users/apple/Documents/dbs-assignment/bankaccount/BankAccount/obj/Debug/net9.0/ref/BankAccount.dll
