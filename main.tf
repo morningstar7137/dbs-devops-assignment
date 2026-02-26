@@ -30,9 +30,9 @@ resource "aws_security_group" "dbs_sg" {
 
 # Launch the EC2 Instance
 resource "aws_instance" "dbs_server" {
-  ami           = "ami-0c02fb55956c7d316" # Correct AMI for Ireland (eu-west-1)
+  ami           = "ami-080ecf65f4d838a6e" # Correct AMI for Ireland (eu-west-1)
   instance_type = "t3.micro"             # Matches your console preference
-  key_name      = "DBS-Assignment-Key"   # Matches the key in your folder
+  key_name      = "DBS-Final-Key"   # Matches the key in your folder
   vpc_security_group_ids = [aws_security_group.dbs_sg.id]
 
   tags = {
